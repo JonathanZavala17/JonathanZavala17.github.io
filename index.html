@@ -336,7 +336,7 @@ $("#texto").html(Huso);
  var HoraForanea = Valores+HoraAgregada;
  
 
-
+//Dar forma al reloj
 if(HoraForanea > 23){
   var d = HoraForanea-24;
 HoraForanea= d;
@@ -355,7 +355,9 @@ if(HoraForanea < 10){
 
  var HoraCompleta;
  var HoraComplete;
- 
+
+
+ //Dar forma al reloj
  if(Minutos < 10){
   Minutos="0" + Minutos;
  }else{ 
@@ -368,22 +370,19 @@ if(HoraForanea < 10){
   Segundos= "" + Segundos;
  }
  
- 
-if(Hora < 10){
+	if(Hora < 10){
   Hora="0" + Hora;
- }
- else{ 
-  Hora= "" + Hora;
- }
+	}
+	else{ 
+	Hora= "" + Hora;
+	}
 
 
- 
+//Salidas
 HoraCompleta = Hora + ":" + Minutos + ":" + Segundos;
 $("#reloj").html(HoraCompleta);
 HoraComplete = HoraForanea + ":" + Minutos + ":" + Segundos;
 $("#reloj1").html(HoraComplete);
-
-
 }
 
 
@@ -392,10 +391,7 @@ $("#reloj1").html(HoraComplete);
 $(document).ready(function(){
 setInterval(RelojDigital, 1000); // llama la funcion anterior cada segundo
  });
+ 
 </script>
-
-    
-  </body>
-
-
+</body>
 </html>
