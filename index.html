@@ -289,19 +289,6 @@
 
 
 <script type="text/javascript">
-//para obtener los values
-/*
-var select = document.getElementById('pais');
-select.addEventListener('change',
-  function(){
-    var selectedOption = this.options[select.selectedIndex];
-   
-    console.log(select.value);
-    $("#texto").html(select.value);
-  });
-
-*/
-
 
 
 
@@ -309,7 +296,7 @@ function RelojDigital(){
 
  
  var Tiempo = new Date(); // funcion date de js
- var Minutos = Tiempo.getMinutes(); // etenciones sobre la variable Tiempo
+ var Minutos = Tiempo.getMinutes(); // extenciones sobre la variable Tiempo
  var Segundos = Tiempo.getSeconds();
  var Hora = Tiempo.getHours();
 
@@ -321,13 +308,12 @@ select.addEventListener('change',
     var selectedOption = this.options[select.selectedIndex];
    
     console.log(select.value);
-//    $("#texto").html(select.value);
-  });
+});
 
 
 //Para aplicar los husos horarios
-var H = parseInt(select.value);
-var Horatio = -6+H;
+var HoraE = parseInt(select.value);
+var Horatio = -6+HoraE;
 
 if(Horatio > -1){
 var Huso = "UTC +" + Horatio;
@@ -345,52 +331,30 @@ $("#texto").html(Huso);
 
 
 //se opera para el segundo reloj
- var a = parseInt(select.value);
- var b = parseInt(Tiempo.getHours());
- var c = a+b;
+ var Valores = parseInt(select.value);
+ var HoraAgregada = parseInt(Tiempo.getHours());
+ var HoraForanea = Valores+HoraAgregada;
  
 
-var ExtHora2; 
 
-if(c > 23){
-  var d = c-24;
-c= d;
+if(HoraForanea > 23){
+  var d = HoraForanea-24;
+HoraForanea= d;
 
  }else{ 
-  c= c;
- }
-if(c < 10){
-  c="0" + c;
- }else{ 
-  c= "" + c;
- }
-
-/*
-if(c > 12){
-  c-=12;
- }else{ 
-  c= c;
+  HoraForanea= HoraForanea;
  }
  
- if(c == 0){
-  c=12;
+if(HoraForanea < 10){
+  HoraForanea="0" + HoraForanea;
  }else{ 
-  c= c;
+  HoraForanea= "" + HoraForanea;
  }
 
-if(c < 12){
-  ExtHora2="AM";
-
- }else{ 
-  ExtHora2= "PM";
-
- }
-*/
 
 
- var ExtHora;
  var HoraCompleta;
- var HoraCompletacion;
+ var HoraComplete;
  
  if(Minutos < 10){
   Minutos="0" + Minutos;
@@ -411,32 +375,13 @@ if(Hora < 10){
  else{ 
   Hora= "" + Hora;
  }
+
+
  
- 
- /*
- if(Hora < 12){
-  ExtHora="AM";
- }else{ 
-  ExtHora= "PM";
- }
- 
- if(Hora > 12){
-  Hora-=12;
- }else{ 
-  Hora= Hora;
- }
- 
- if(Hora == 0){
-  Hora=12;
- }else{ 
-  Hora= Hora;
- }
-*/
- 
- HoraCompleta = Hora + ":" + Minutos + ":" + Segundos /*+ ":" + ExtHora*/;
- $("#reloj").html(HoraCompleta);
-HoraCompletacion = c + ":" + Minutos + ":" + Segundos /*+ ":" + ExtHora2*/;
- $("#reloj1").html(HoraCompletacion);
+HoraCompleta = Hora + ":" + Minutos + ":" + Segundos;
+$("#reloj").html(HoraCompleta);
+HoraComplete = HoraForanea + ":" + Minutos + ":" + Segundos;
+$("#reloj1").html(HoraComplete);
 
 
 }
