@@ -12,6 +12,7 @@
     <!-- Bootstrap core CSS -->
    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="css/styl.css" rel="stylesheet" type="text/css">
   </head>
   <style>
             .jumbotron
@@ -33,7 +34,7 @@
                     <p class="text-center">
                            <b>Indicaciones </b>
                            <br>
-                            Seleccione un país y luego se mostrara la hora que desee conocer.
+                           <i> Seleccione un país y luego se mostrara la hora que desee conocer.</i>
                            <br><br>
                 
 
@@ -270,18 +271,38 @@
           </div>
           <br>
           <div class="conten_dare col-md-4">
-          <p class="text.justify">La hora actual es:</p>
-          <p class="text.justify" id="reloj">Aqui va la tabla con las horas </p><br>
-          <p class="text.justify">La hora deseada es:</p>
-          <p class="text.justify" id="reloj1">Aqui va la tabla con las horas </p>
-       
-      <p class="text.justify" id="texto">Aqui va la tabla con las horas </p>
+          <strong>  <p class="text.justify">La hora actual es:</p></strong>
+          
+            <div class="wrap">
+    <div class="widget">
+      <div class="fecha">
+        <p class="text.justify" id="fecha">Aqui va la tabla con las horas </p>
+      </div>
+  
+      <div class="reloj">
+        <p class="text.justify" id="reloj">Aqui va la tabla con las horas </p><br><br>
+      </div>
+    </div>
+  </div>
+
+   <strong><p class="text.justify">La hora deseada es:</p></strong>
+           <div class="wrap">
+    <div class="widget">
+      <div class="fecha">
+        <p class="text.justify" id="fecha1">Aqui va la tabla con las horas </p>
+      </div>
+  
+      <div class="reloj">
+        <p class="text.justify" id="reloj1">Aqui va la tabla con las horas </p>
+      </div>
+      <div class="reloj">
+        <p class="text.justify" id="texto">Aqui va la tabla con las horas </p>
+      </div>
+    </div>
+  </div>
       
   <!--    <button type="button" name='close' value='Salir' onclick='window.close()' class="btn btn-primary">Salir</button> -->
-          
-          </div>
-</div>
- </div>
+        
 
 
         <script type="text/javascript" src="bootstrap.js"></script>
@@ -300,6 +321,10 @@ function RelojDigital(){
  var Minutos = Tiempo.getMinutes(); // extenciones sobre la variable Tiempo
  var Segundos = Tiempo.getSeconds();
  var Hora = Tiempo.getHours();
+ var Dia = Tiempo.getDate();
+ var DiaSemana = Tiempo.getDay();
+ var Mes = Tiempo.getMonth();
+ var Año  = Tiempo.getFullYear();
 
 //se obtiene los values
 
@@ -335,12 +360,17 @@ $("#texto").html(Huso);
  var Valores = parseInt(select.value);
  var HoraAgregada = parseInt(Tiempo.getHours());
  var HoraForanea = Valores+HoraAgregada;
+ var Day = parseInt(Tiempo.getDate());
+ var Semanario = parseInt(Tiempo.getDay());
  
 
 //Dar forma al reloj
 if(HoraForanea > 23){
   var d = HoraForanea-24;
 HoraForanea= d;
+Day=Day+1;
+Semanario=Semanario+1;
+
 
  }else{ 
   HoraForanea= HoraForanea;
@@ -379,11 +409,112 @@ if(HoraForanea < 10){
 	}
 
 
+if(DiaSemana == 0){
+  DiaSemana="Domingo";
+ }
+if(DiaSemana == 1){
+  DiaSemana="Lunes";
+ }
+if(DiaSemana == 2){
+  DiaSemana="Martes";
+ }
+if(DiaSemana == 3){
+  DiaSemana="Miercoles";
+ }
+if(DiaSemana == 4){
+  DiaSemana="Jueves";
+ }
+if(DiaSemana == 5){
+  DiaSemana="Viernes";
+ }
+if(DiaSemana == 6){
+  DiaSemana="Sabado";
+ }
+
+
+
+
+
+if(Semanario == 0){
+  Semanario="Domingo";
+ }
+if(Semanario == 1){
+  Semanario="Lunes";
+ }
+if(Semanario == 2){
+  Semanario="Martes";
+ }
+if(Semanario == 3){
+  Semanario="Miercoles";
+ }
+if(Semanario == 4){
+  Semanario="Jueves";
+ }
+if(Semanario == 5){
+  Semanario="Viernes";
+ }
+if(Semanario == 6){
+  Semanario="Sabado";
+ }
+
+
+
+
+///Meses
+if(Mes == 0){
+  Mes="Enero";
+ }
+if(Mes == 1){
+  Mes="Febrero";
+ }
+if(Mes == 2){
+  Mes="Marzo";
+ }
+if(Mes == 3){
+  Mes="Abril";
+ }
+if(Mes == 4){
+  Mes="Mayo";
+ }
+if(Mes == 5){
+  Mes="Junio";
+ }
+if(Mes == 6){
+  Mes="Julio";
+ }
+if(Mes == 7){
+  Mes="Agosto";
+ }
+if(Mes == 8){
+  Mes="Septiembre";
+ }
+if(Mes == 9){
+  Mes="Octubre";
+ }
+if(Mes == 10){
+  Mes="Noviembre";
+ }
+if(Mes == 11){
+  Mes="Diciembre";
+ }
+
+
+
+
+
 //Salidas
 HoraCompleta = Hora + ":" + Minutos + ":" + Segundos;
 $("#reloj").html(HoraCompleta);
 HoraComplete = HoraForanea + ":" + Minutos + ":" + Segundos;
 $("#reloj1").html(HoraComplete);
+
+
+//Fecha
+var fecha= DiaSemana +" "+ Dia + " de " + Mes + " del " + Año;
+ $("#fecha").html(fecha);
+var fechaSolicitada= Semanario +" "+ Day + " de " + Mes + " del " + Año;
+ $("#fecha1").html(fechaSolicitada);
+
 }
 
 
