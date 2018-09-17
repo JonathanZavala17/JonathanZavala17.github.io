@@ -367,7 +367,7 @@ $("#texto").html(Huso);
 //Dar forma al reloj
 if(HoraForanea > 23){
   var d = HoraForanea-24;
-HoraForanea= d;
+	HoraForanea= d;
 	Day=Day+1;
 	Semanario=Semanario+1;
 	
@@ -462,7 +462,9 @@ if(Semanario == 5){
 if(Semanario == 6){
   Semanario="Sabado";
  }
-
+if(Semanario == 7){
+  Semanario="Domingo";
+ }
 
 
 
