@@ -368,9 +368,15 @@ $("#texto").html(Huso);
 if(HoraForanea > 23){
   var d = HoraForanea-24;
 HoraForanea= d;
-Day=Day+1;
-Semanario=Semanario+1;
-
+	Day=Day+1;
+	Semanario=Semanario+1;
+	
+if(HoraForanea >23){
+	var x = HoraForanea-24;
+	var HoraForanea= x;
+	Day=Day+1;
+	Semanario=Semanario+1;
+}
 
  }else{ 
   HoraForanea= HoraForanea;
