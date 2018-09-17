@@ -6,6 +6,7 @@
 	box-sizing: border-box;
 }
 
+
 body {
 	background:url(bg.jpg) #819FF7;
 	background-size:cover;
@@ -38,12 +39,12 @@ body {
 	/*margin-bottom: 5px;*/
 	background: #819FF7;
 	padding: 20px;
-	width: 400%;
+	width: 200%;
 }
 
 .reloj {
 	font-family: Oswald, Arial;
-	width: 400%;
+	width: 200%;
 	height: 80px;
 	padding: 20px;
 	font-size: 2em;
