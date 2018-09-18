@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     
 
-    <title>Reloj Mundial</title>
+    <title>Widget Clock</title>
 
     <!-- Bootstrap core CSS -->
    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -25,7 +25,7 @@
   <body>
     <div class="container">
       <div class="alert alert-secondary">
-          <h1 align="center" style="color:#0066FF">Reloj Mundial</h1>    
+          <h1 align="center" style="color:#000000">Widget Clock</h1>    
       </div>
       </div>
        <div class="container">
@@ -317,8 +317,8 @@
 
 function RelojDigital(){
 
- 
- var Tiempo = new Date(); // funcion date de js
+//FUNCIONES DATE DE JS 
+ var Tiempo = new Date(); 
  var Minutos = Tiempo.getMinutes(); // extenciones sobre la variable Tiempo
  var Segundos = Tiempo.getSeconds();
  var Hora = Tiempo.getHours();
@@ -327,8 +327,10 @@ function RelojDigital(){
  var Mes = Tiempo.getMonth();
  var Año  = Tiempo.getFullYear();
 
-//se obtiene los values
 
+
+
+//se obtiene los values
 var select = document.getElementById('pais');
 select.addEventListener('change',
   function(){
@@ -417,6 +419,11 @@ var k = Min-60;
 
 $("#texto").html(Huso);	
 	}
+
+
+
+
+
 	
 //x:45 horas	
 else if (selected == 'Nepal'){
@@ -433,6 +440,12 @@ var k = Min-60;
 
 $("#texto").html(Huso);
 }
+
+
+
+
+
+
 
 else{
 	Min = Minutos;
@@ -470,7 +483,7 @@ $("#texto").html(Huso);
 
 	
 
-
+//Obtener los nombres de los dias de la semana
 if(DiaSemana == 0){
   DiaSemana="Domingo";
  }
@@ -496,7 +509,7 @@ if(DiaSemana == 6){
 
 
 
-
+//Obtener nombre para los dias de semana para la fecha buscada
 if(Semanario == 0){
   Semanario="Domingo";
  }
