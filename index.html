@@ -413,7 +413,15 @@ Huso=Huso+":30";
 if(Min > 59){
 var k = Min-60;
 	Min= k;
-	HoraForanea='0'+ (parseInt(HoraForanea)+1);
+	
+	//PARA DARLE DISE;O AL RELOJ CUANDO TENGA UNA SOLA CIFRA
+	if(HoraForanea < 8){
+    HoraForanea='0'+ (parseInt(HoraForanea)+1);
+	}
+	else{ 
+	HoraForanea=parseInt(HoraForanea)+1;
+	}
+	
 	
 }
 
@@ -434,11 +442,21 @@ Huso=Huso+':45';
 if(Min > 59){
 var k = Min-60;
 	Min= k;
-	HoraForanea='0'+ (parseInt(HoraForanea)+1);
 	
+	
+	//PARA DARLE DISE;O AL RELOJ CUANDO TENGA UNA SOLA CIFRA
+	if(HoraForanea < 8){
+    HoraForanea='0'+ (parseInt(HoraForanea)+1);
+	}
+	else{ 
+	HoraForanea=parseInt(HoraForanea)+1;
+	}	
 }
 
+
 $("#texto").html(Huso);
+
+
 }
 
 
