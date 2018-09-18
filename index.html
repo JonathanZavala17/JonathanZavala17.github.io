@@ -44,7 +44,7 @@
            <form  class="col-md-8">
            <div class="form-group">
            <label for="exampleFormControlSelect1">Paises</label>
-           <select class="form-control" id="pais">
+           <select class="form-control" id="pais" name="pais">
             
 <!--   Aqui viene la lista de todos los paises 
 -->
@@ -260,36 +260,27 @@
             <option value="8">Zambia</option>
             <option value="8">Zimbawe</option>
 
-
-
-			
 <!--  Aqui termina 
 -->
           </select>
-  </div>
-         
-
           </div>
-          
   <!--        <button type="button" class="btn btn-primary">Seleccionar</button> -->
-
 
           </form>
           
-       <form>
-		   
-		    <br>
+          </div>
+          <br>
           <div class="conten_dare col-md-4">
           <strong>  <p class="text.justify">La hora actual es:</p></strong>
           
             <div class="wrap">
     <div class="widget">
       <div class="fecha">
-        <p class="text.justify" id="fecha">La fecha local es</p>
+        <p class="text.justify" id="fecha">Aqui va la tabla con las horas </p>
       </div>
   
       <div class="reloj">
-        <p class="text.justify" id="reloj">La hora local</p><br><br>
+        <p class="text.justify" id="reloj">Aqui va la tabla con las horas </p><br><br>
       </div>
     </div>
   </div>
@@ -298,20 +289,19 @@
            <div class="wrap">
     <div class="widget">
       <div class="fecha">
-        <p class="text.justify" id="fecha1">La fecha deseada es</p>
+        <p class="text.justify" id="fecha1">Aqui va la tabla con las horas </p>
       </div>
   
       <div class="reloj">
-        <p class="text.justify" id="reloj1">La hora deseada es</p>
+        <p class="text.justify" id="reloj1">Aqui va la tabla con las horas </p>
       </div>
       <div class="reloj">
-        <p class="text.justify" id="texto">La diferencia de hora es</p>
+        <p class="text.justify" id="texto">Aqui va la tabla con las horas </p>
       </div>
     </div>
+  
+  <p class="text.justify" id="paises">Aqui va la tabla con las horas </p>
   </div>
-		   </form>
-       
-        
       
   <!--    <button type="button" name='close' value='Salir' onclick='window.close()' class="btn btn-primary">Salir</button> -->
         
@@ -406,11 +396,64 @@ if(HoraForanea < 10){
  var HoraComplete;
 
 
+
+//Obtener texto del select
+var combo = document.getElementById("pais");
+var selected = combo.options[combo.selectedIndex].text;
+ $("#paises").html(selected);
+
+//Para paises que no tienen un huso entero
+//x:30 horas
+if (selected == 'Afganistan' || selected == 'Iran' || selected == 'India' || selected == 'Sri Lanka' || selected == 'Myanmr'){
+
+var min = 30;
+var Min = parseInt(Minutos) + min;
+Huso=Huso+":30";
+if(Min > 59){
+var k = Min-60;
+	Min= k;
+	HoraForanea='0'+ (parseInt(HoraForanea)+1);
+	
+}
+
+$("#texto").html(Huso);	
+	}
+	
+//x:45 horas	
+else if (selected == 'Nepal'){
+
+var min = 45;
+var Min = parseInt(Minutos) + min;
+Huso=Huso+':45';
+if(Min > 59){
+var k = Min-60;
+	Min= k;
+	HoraForanea='0'+ (parseInt(HoraForanea)+1);
+	
+}
+
+$("#texto").html(Huso);
+}
+
+else{
+	Min = Minutos;
+	Huso=Huso;
+$("#texto").html(Huso);
+	}
+
+
+
  //Dar forma al reloj
  if(Minutos < 10){
   Minutos="0" + Minutos;
  }else{ 
   Minutos= "" + Minutos;
+ }
+ 
+  if(Min < 10){
+  Min="0" + Min;
+ }else{ 
+  Min= "" + Min;
  }
  
  if(Segundos < 10){
@@ -425,6 +468,8 @@ if(HoraForanea < 10){
 	else{ 
 	Hora= "" + Hora;
 	}
+
+	
 
 
 if(DiaSemana == 0){
@@ -525,7 +570,7 @@ if(Mes == 11){
 //Salidas
 HoraCompleta = Hora + ":" + Minutos + ":" + Segundos;
 $("#reloj").html(HoraCompleta);
-HoraComplete = HoraForanea + ":" + Minutos + ":" + Segundos;
+HoraComplete = HoraForanea + ":" + Min + ":" + Segundos;
 $("#reloj1").html(HoraComplete);
 
 
